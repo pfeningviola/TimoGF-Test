@@ -16,6 +16,8 @@ export class FormComponent implements OnInit {
   message: string;
   submitted = false;
   validData = false;
+  errorBySubmit = false;
+  submissionError;
   error: string;
 
 
@@ -25,14 +27,18 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
+    this.error = null;
+
+    //client-side validation in the service, the method returns wit an Object(valid:boolean, error:string)
     let validation = this.formValidationService.isSubmittedDataValid(this.user.name, this.user.text);
 
     if (validation.valid) {
       this.validData = true;
-      this.submittedName = this.user.name;
+      this.submittedName = this.user.name; //to show the submitted valid text and name
       this.submittedText = this.user.text;
     } else {
-      this.error = validation.error;
+      this.error = validation.error; //to show error message
+      
     }
   }
 

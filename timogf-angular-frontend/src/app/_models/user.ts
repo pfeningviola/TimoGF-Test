@@ -3,5 +3,8 @@ export class User {
     name: string;
     text: string;
 
-    constructor() {}
+    constructor() {
+        this.name = null;
+        this.text = null;
+    }
 }

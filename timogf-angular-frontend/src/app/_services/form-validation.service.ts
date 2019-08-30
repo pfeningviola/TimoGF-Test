@@ -9,6 +9,10 @@ export class FormValidationService {
   constructor() { }
 
   isSubmittedDataValid(name: string, text: string){
+    //check if all field were filled
+    if(name === null || text === null || name === '' || text === ''){
+      return new DataValidation(false, 'All field are required.')
+    }
     let partsOfName: string[] = name.trim().split(' ');
 
     //check if the name hase at least two parts

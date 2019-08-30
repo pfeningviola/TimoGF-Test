@@ -4,19 +4,16 @@
   <form #textForm="ngForm" (submit)="onSubmit()">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Complete name" name="name" [(ngModel)]="user.name" required
-              #name="ngModel">
+              #name="ngModel" minlength="1">
     </div>
 
     <div class="form-group">
         <textarea type="text" class="form-control" placeholder="Text" name="text" [(ngModel)]="user.text" required
-        #text="ngModel"></textarea>
+        #text="ngModel" minlength="1"></textarea>
     </div>
 
-    <div *ngIf="(name.invalid && (name.dirty || name.touched)) || (text.invalid && (text.dirty || text.touched))" class="alert alert-danger">
-              All field are required.
-    </div>
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-    
+
     <button type="submit" id="button">Submit</button>
   </form>
 
