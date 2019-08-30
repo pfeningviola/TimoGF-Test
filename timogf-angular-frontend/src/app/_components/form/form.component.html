@@ -1,22 +1,26 @@
 <div class="w-50 m-auto pt-5 text-center">
   <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
-  <form #textForm="ngForm" (submit)="onSubmit(textForm)">
+  <form #textForm="ngForm" (submit)="onSubmit()">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Complete name" name="name" [(ngModel)]="user.name" required
               #name="ngModel">
     </div>
-    This is {{user.name}}.
 
     <div class="form-group">
         <textarea type="text" class="form-control" placeholder="Text" name="text" [(ngModel)]="user.text" required
         #text="ngModel"></textarea>
     </div>
 
-    <div *ngIf="name.invalid || text.invalid" class="alert alert-danger">
+    <div *ngIf="(name.invalid && (name.dirty || name.touched)) || (text.invalid && (text.dirty || text.touched))" class="alert alert-danger">
               All field are required.
     </div>
 
     <button type="submit" id="button">Submit</button>
   </form>
+
+  <div [hidden]=!validData>
+      <h3>{{submittedName}} submitted the following text:</h3>
+      <p>{{submittedText}}</p>
+  </div>
 </div>
