@@ -4,17 +4,17 @@
   <form #textForm="ngForm" (submit)="onSubmit()">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Complete name" name="name" [(ngModel)]="user.name" required
-              #name="ngModel" minlength="1">
+              #name="ngModel" minlength="1" [disabled]="submittingInProcess">
     </div>
 
     <div class="form-group">
         <textarea type="text" class="form-control" placeholder="Text" name="text" [(ngModel)]="user.text" required
-        #text="ngModel" minlength="1"></textarea>
+        #text="ngModel" minlength="1" [disabled]="submittingInProcess"></textarea>
     </div>
 
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
-    <button type="submit" id="button">Submit</button>
+    <button type="submit" id="button" [disabled]="submittingInProcess">Submit</button>
   </form>
 
   <div [hidden]=!validData>
