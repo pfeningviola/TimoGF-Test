@@ -21,7 +21,7 @@ export class FormValidationService {
 
   isSubmittedDataValid(name: string, text: string) {
     // check if all field are filled
-    if (name === null || text === null || name === '' || text === '') {
+    if (name === null || text === null || name.trim() === '' || text.trim() === '') {
       return new DataValidation(false, 'All field are required.');
     }
     const partsOfName: string[] = name.trim().split(' ');
