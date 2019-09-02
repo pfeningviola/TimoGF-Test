@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   errorBySubmit = false;
   submissionError;
   error: string;
+  numberOfPartsOfUsername: number;
 
 
   constructor(private formValidationService: FormValidationService) { }
@@ -32,13 +33,17 @@ export class FormComponent implements OnInit {
     //client-side validation in the service, the method returns with an Object(valid:boolean, error:string)
     let validation = this.formValidationService.isSubmittedDataValid(this.user.name, this.user.text);
 
-    if (validation.valid) {
-      this.validData = true;
-      this.submittedName = this.user.name; //to show the submitted valid text and name
-      this.submittedText = this.user.text;
+    if (validation.valid) { //if the client-side validation ok, the program sends the data to the server
+          this.formValidationService.serverSideValidation(this.user.name, this.user.text)
+          .subscribe((response) => { this.numberOfPartsOfUsername = response.numberOfPartsOfUsername;
+                                     this.validData = true;           //to show the submitted valid text and name
+                                     this.submittedName = this.user.name;
+                                     this.submittedText = this.user.text;
+                                   },
+                      error => {this.error = error.message}
+          );
     } else {
       this.error = validation.error; //to show error message
-      
     }
   }
 

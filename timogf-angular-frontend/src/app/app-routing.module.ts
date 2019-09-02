@@ -9,7 +9,7 @@ import { MainComponent } from './_components/main/main.component';
 //all paths will redirect to it
 const routes: Routes = [
   { path: '', component: MainComponent },
-  { path: '**', redirectTo: '' }
+  //{ path: '**', redirectTo: '' }
 ];
 
 @NgModule({
