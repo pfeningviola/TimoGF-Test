@@ -6,13 +6,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ErrorHandlingService } from './error-handling.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormValidationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorHandlingService: ErrorHandlingService) { }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -39,7 +40,7 @@ export class FormValidationService {
 
   serverSideValidation(name:string, text:string): Observable<ValidationResponse> {
     return this.http.post<ValidationResponse>(ROOT_URL + '/validation', {name, text}, this.httpOptions)
-      //.pipe(
-      //  catchError(this.errorHandlingService.handleError));
+      .pipe(
+        catchError(this.errorHandlingService.handleError)); //to catch the server side errors
   }
 }

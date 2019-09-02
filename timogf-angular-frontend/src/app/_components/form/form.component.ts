@@ -40,12 +40,10 @@ export class FormComponent implements OnInit {
                                      this.submittedName = this.user.name;
                                      this.submittedText = this.user.text;
                                    },
-                      error => {this.error = error.message}
+                      error => {this.error = error} //to show the server-side error message
           );
     } else {
-      this.error = validation.error; //to show error message
+      this.error = validation.error; //to show the client-side error message
     }
   }
-
-
 }
