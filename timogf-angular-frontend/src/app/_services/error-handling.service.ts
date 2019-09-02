@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-//to catch from the server returned errors and to be able to show these error messages
+// to catch from the server returned errors and to be able to show these error messages
 export class ErrorHandlingService {
 
   constructor(private router: Router) { }

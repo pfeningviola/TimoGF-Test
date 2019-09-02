@@ -4,14 +4,14 @@ TimoGF Test, this is a small test application developed by Viola Pfening as test
 The front-end of this project was generated with Angular CLI: 8.0.3 | Node: 10.16.0.
 The backend part was generated with Java v1.8 and SpringBoot v2.1.7.
 
-# Getting Started - Frontend
+## Getting Started - Frontend
 
 $ npm install -g @angular/cli through command line and download NodeJS from nodejs.org/en/
 
 Install ngx-color-picker module ($ npm install ngx-color-picker --save through command line) / follow the instructions in the link below:
 https://www.npmjs.com/package/ngx-color-picker
 
-#Getting Started - Backend
+## Getting Started - Backend
 
 To run the backend of the application you will need to have Java JDK 8 (download from https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 

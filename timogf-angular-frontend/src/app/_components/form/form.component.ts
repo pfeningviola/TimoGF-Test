@@ -27,29 +27,29 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.validData = false;
     this.error = null;
-    this.submittingInProcess = true; //to make the form fields and the submit button disable until finish the validation process
+    this.submittingInProcess = true; // to make the form fields and the submit button disable until finish the validation process
     this.choosenColor = this.defaultColor;
-    
-    //client-side validation in the service, the method returns with an Object(valid:boolean, error:string)
+
+    // client-side validation in the service, the method returns with an Object(valid:boolean, error:string)
     let validation = this.formValidationService.isSubmittedDataValid(this.user.name, this.user.text);
 
-    if (validation.valid) { //if the client-side validation ok, the program sends the data to the server
+    if (validation.valid) { // if the client-side validation ok, the program sends the data to the server
           this.formValidationService.serverSideValidation(this.user.name, this.user.text)
           .subscribe((response) => { this.submittingInProcess = false;
                                      this.numberOfPartsOfUsername = response.numberOfPartsOfUsername;
-                                     this.validData = true;           //to show the submitted valid text and name
+                                     this.validData = true;           // to show the submitted valid text and name
                                      this.submittedName = this.user.name;
                                      this.submittedText = this.user.text;
                                    },
-                      error => { this.error = error; //to show the server-side error message
+                      error => { this.error = error; // to show the server-side error message
                                  this.submittingInProcess = false;
                                }
           );
     } else {
-      this.error = validation.error; //to show the client-side error message
+      this.error = validation.error; // to show the client-side error message
       this.submittingInProcess = false;
     }
   }
