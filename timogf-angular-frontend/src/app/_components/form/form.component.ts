@@ -29,7 +29,7 @@ export class FormComponent implements OnInit {
   onSubmit(){
     this.error = null;
 
-    //client-side validation in the service, the method returns wit an Object(valid:boolean, error:string)
+    //client-side validation in the service, the method returns with an Object(valid:boolean, error:string)
     let validation = this.formValidationService.isSubmittedDataValid(this.user.name, this.user.text);
 
     if (validation.valid) {
