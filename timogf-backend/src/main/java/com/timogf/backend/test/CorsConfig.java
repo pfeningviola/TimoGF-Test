@@ -1,4 +1,4 @@
-package com.timogf.test.test;
+package com.timogf.backend.test;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

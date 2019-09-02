@@ -1,4 +1,4 @@
-package com.timogf.test.test.services;
+package com.timogf.backend.test.services;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.timogf.test.test;
+package com.timogf.backend.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

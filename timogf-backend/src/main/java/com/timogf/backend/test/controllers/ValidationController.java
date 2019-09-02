@@ -1,9 +1,9 @@
-package com.timogf.test.test.controllers;
+package com.timogf.backend.test.controllers;
 
-import com.timogf.test.test.models.ErrorMessage;
-import com.timogf.test.test.models.UserInputDTO;
-import com.timogf.test.test.models.ValidationResponseDTO;
-import com.timogf.test.test.services.ValidationService;
+import com.timogf.backend.test.models.ErrorMessage;
+import com.timogf.backend.test.models.UserInputDTO;
+import com.timogf.backend.test.models.ValidationResponseDTO;
+import com.timogf.backend.test.services.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

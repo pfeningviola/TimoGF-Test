@@ -1,4 +1,4 @@
-package com.timogf.test.test.models;
+package com.timogf.backend.test.models;
 
 public class ValidationResponseDTO {
     private UserInputDTO user;

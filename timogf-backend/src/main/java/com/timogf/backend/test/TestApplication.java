@@ -1,4 +1,4 @@
-package com.timogf.test.test;
+package com.timogf.backend.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
