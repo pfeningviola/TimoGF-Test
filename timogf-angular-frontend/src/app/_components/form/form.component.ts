@@ -14,10 +14,12 @@ export class FormComponent implements OnInit {
   submittedName: string;
   submittedText: string;
   message: string;
-  validData = false;
+  validData: boolean;
   submittingInProcess = false;
   error: string;
   numberOfPartsOfUsername: number;
+  defaultColor = '#db3b3b';
+  choosenColor: string;
 
 
   constructor(private formValidationService: FormValidationService) { }
@@ -26,9 +28,11 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
+    this.validData = false;
     this.error = null;
     this.submittingInProcess = true; //to make the form fields and the submit button disable until finish the validation process
-
+    this.choosenColor = this.defaultColor;
+    
     //client-side validation in the service, the method returns with an Object(valid:boolean, error:string)
     let validation = this.formValidationService.isSubmittedDataValid(this.user.name, this.user.text);
 

@@ -1,5 +1,4 @@
 <div class="w-50 m-auto pt-5 text-center">
-  
 
   <form #textForm="ngForm" (submit)="onSubmit()">
     <div class="form-group">
@@ -12,6 +11,11 @@
         #text="ngModel" minlength="1" [disabled]="submittingInProcess"></textarea>
     </div>
 
+    <div class="form-group">
+        <label for="colorpicker">Choose a color for your text:</label>
+        <input [(colorPicker)]="defaultColor" [style.background]="defaultColor" class="form-control w-25 m-auto" id="colorpicker"/>
+    </div>
+
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
     <button type="submit" id="button" [disabled]="submittingInProcess">Submit</button>
@@ -19,6 +23,6 @@
 
   <div [hidden]=!validData>
       <h3>{{submittedName}} submitted the following text:</h3>
-      <p>{{submittedText}}</p>
+      <h4 [style.color]="choosenColor">{{submittedText}}</h4>
   </div>
 </div>
