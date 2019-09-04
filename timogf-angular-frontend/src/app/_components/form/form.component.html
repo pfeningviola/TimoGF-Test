@@ -20,9 +20,4 @@
 
     <button type="submit" id="button" [disabled]="submittingInProcess">Submit</button>
   </form>
-
-  <div [hidden]=!validData>
-      <h3>{{submittedName}} submitted the following text:</h3>
-      <h4 [style.color]="choosenColor">{{submittedText}}</h4>
-  </div>
 </div>

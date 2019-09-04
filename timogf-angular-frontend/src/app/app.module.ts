@@ -9,13 +9,15 @@ import { MainComponent } from './_components/main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BannerComponent } from './_components/banner/banner.component';
 import { FormComponent } from './_components/form/form.component';
+import { MessageComponent } from './_components/message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     BannerComponent,
-    FormComponent
+    FormComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

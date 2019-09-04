@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  isValidData = false;
+  submittedName: string;
+  submittedText: string;
+  choosenColor: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  toPrint(submittedData: string[]){
+    this.isValidData = true;
+    this.submittedName = submittedData[0];
+    this.submittedText = submittedData[1];
+    this.choosenColor = submittedData[2];
+  }
+
+  setInvalidData(invalidData: boolean){
+    this.isValidData = false;
+  }
 }

@@ -5,5 +5,16 @@
         <h1>Welcome in our Test Application!</h1>
         <h3>Type in your complete name and your text!</h3>
     </div>
-    <app-form></app-form>
+
+    <!--Receive emitted data from FormComponent-->
+    <app-form (messageToPrint)="toPrint($event)"
+              (invalidData)="setInvalidData($event)">
+    </app-form>
+
+    <!--Send data to MessageComponent-->
+    <app-message [isValidData]="isValidData"
+                 [submittedName]="submittedName"
+                 [submittedText]="submittedText"
+                 [choosenColor]="choosenColor">
+    </app-message>
 </div>

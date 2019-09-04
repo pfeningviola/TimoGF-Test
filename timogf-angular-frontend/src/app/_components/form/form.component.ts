@@ -1,6 +1,6 @@
 import { DataValidation } from './../../_models/data-validation';
 import { User } from './../../_models/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormValidationService } from './../../_services/form-validation.service';
 
 @Component({
@@ -11,15 +11,13 @@ import { FormValidationService } from './../../_services/form-validation.service
 
 export class FormComponent implements OnInit {
   user: User = new User();
-  submittedName: string;
-  submittedText: string;
-  message: string;
-  validData: boolean;
   submittingInProcess = false;
   error: string;
   numberOfPartsOfUsername: number;
   defaultColor = '#db3b3b';
   choosenColor: string;
+  @Output() messageToPrint = new EventEmitter<string[]>();
+  @Output() invalidData = new EventEmitter<boolean>();
 
 
   constructor(private formValidationService: FormValidationService) { }
@@ -28,7 +26,6 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.validData = false;
     this.error = null;
     this.submittingInProcess = true; // to make the form fields and the submit button disable until finish the validation process
     this.choosenColor = this.defaultColor;
@@ -40,17 +37,18 @@ export class FormComponent implements OnInit {
           this.formValidationService.serverSideValidation(this.user.name, this.user.text)
           .subscribe((response) => { this.submittingInProcess = false;
                                      this.numberOfPartsOfUsername = response.numberOfPartsOfUsername;
-                                     this.validData = true;           // to show the submitted valid text and name
-                                     this.submittedName = this.user.name;
-                                     this.submittedText = this.user.text;
+                                     // to show the submitted valid text and name, send to the MessageComponent
+                                     this.messageToPrint.emit([this.user.name, this.user.text, this.choosenColor])
                                    },
                       error => { this.error = error; // to show the server-side error message
                                  this.submittingInProcess = false;
+                                 this.invalidData.emit(true);
                                }
           );
     } else {
       this.error = validation.error; // to show the client-side error message
       this.submittingInProcess = false;
+      this.invalidData.emit(true);
     }
   }
 }
