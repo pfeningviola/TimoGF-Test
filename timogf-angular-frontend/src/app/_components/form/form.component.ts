@@ -40,7 +40,11 @@ export class FormComponent implements OnInit {
                                      // to show the submitted valid text and name, send to the MessageComponent
                                      this.messageToPrint.emit([this.user.name, this.user.text, this.choosenColor])
                                    },
-                      error => { this.error = error; // to show the server-side error message
+                      error => { if (error === 'undefined') { // if the server isn't working
+                                    this.error = "Sorry, something went wrong. Please try again later!"
+                                 } else {
+                                    this.error = error; // to show the server-side error message
+                                 }
                                  this.submittingInProcess = false;
                                  this.invalidData.emit(true);
                                }
